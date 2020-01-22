@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Kurs Reacta - Tydzień 2</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <style>
+      .App {
+        font-family: sans-serif;
+      }
+
+      .TimeboxEditor {
+        text-align: right;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      input {
+        min-width: 60%;
+        margin-left: 20px;
+        font-size: 16px;
+      }
+
+      button {
+        font-size: 16px;
+        margin-left: 10px;
+      }
+
+      .Timebox {
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .Clock {
+        color: orangered;
+      }
+
+      .ProgressBar {
+        border: 1px solid orangered;
+        border-radius: 5px;
+        height: 25px;
+        margin-bottom: 20px;
+        padding: 5px;
+      }
+
+      .ProgressBar::after {
+        display: block;
+        content: "";
+        float: right;
+        background-color: orangered;
+        width: calc(100% - 20%);
+        height: 100%;
+      }
+
+      .inactive {
+        filter: blur(2px) grayscale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/javascript">
+    const rootElement = document.getElementById("root");
+    //Timebox
+
+    const h2TB = document.createElement("h2");
+    h2TB.className = "Clock";
+    h2TB.textContent = "Pozostalo 13:28";
+
+    const buttonOne = document.createElement("button");
+    buttonOne.disabled = "true";
+    buttonOne.textContent = "Start";
+
+    const buttonTwo = document.createElement("button");
+    buttonTwo.textContent = "Stop";
+
+    const buttonThree = document.createElement("button");
+    buttonThree.textContent = "Pauzuj";
+
+    const progressBar = document.createElement("div");
+    progressBar.className = "ProgressBar";
+
+    const h1TB = document.createElement("h1");
+    h1TB.textContent = "Ucze sie skrotow klawiszowych";
+
+    const TB = document.createElement("div");
+    TB.className = "Timebox";
+
+    TB.append(
+      h1TB,
+      h2TB,
+      progressBar,
+      buttonOne,
+      buttonTwo,
+      buttonThree,
+      "Liczba przerw: 2"
+    );
+
+    //TextboxEditor
+    const inputTwo = document.createElement("input");
+    inputTwo.value = "25";
+    inputTwo.disabled = true;
+    inputTwo.type = "number";
+
+    const labelTwo = document.createElement("label");
+    labelTwo.textContent = "Ile minut";
+    labelTwo.append(inputTwo);
+
+    const inputOne = document.createElement("input");
+    inputOne.value = "Ucze sie skrotow klawiszowych";
+    inputOne.disabled = true;
+    inputOne.type = "text";
+
+    const labelOne = document.createElement("label");
+    labelOne.textContent = "Co robisz";
+    labelOne.append(inputOne);
+
+    const brOne = document.createElement("br");
+    const brTwo = document.createElement("br");
+
+    const buttonTBE = document.createElement("button");
+    buttonTBE.disabled = true;
+    buttonTBE.textContent = "Start";
+
+    const TBE = document.createElement("div");
+    TBE.className = "TimeboxEditor inactive";
+    TBE.append(labelOne, brOne, labelTwo, brTwo, buttonTBE);
+
+    //div App
+    const divApp = document.createElement("div");
+    divApp.className = "App";
+    divApp.append(TBE, TB);
+
+    // free elements
+    const h1 = document.createElement("h1");
+    h1.textContent = "Kurs Reacta Tydzien 2";
+    const hr = document.createElement("hr");
+
+    rootElement.append(h1, hr, divApp);
+  </script>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Kurs Reacta - Tydzień 2</title>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <style>
+      .App {
+        font-family: sans-serif;
+      }
+
+      .TimeboxEditor {
+        text-align: right;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      input {
+        min-width: 60%;
+        margin-left: 20px;
+        font-size: 16px;
+      }
+
+      button {
+        font-size: 16px;
+        margin-left: 10px;
+      }
+
+      .Timebox {
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .Clock {
+        color: orangered;
+      }
+
+      .ProgressBar {
+        border: 1px solid orangered;
+        border-radius: 5px;
+        height: 25px;
+        margin-bottom: 20px;
+        padding: 5px;
+      }
+
+      .ProgressBar::after {
+        display: block;
+        content: "";
+        float: right;
+        background-color: orangered;
+        width: calc(100% - 20%);
+        height: 100%;
+      }
+
+      .inactive {
+        filter: blur(2px) grayscale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/javascript">
+    const rootElement = document.getElementById("root");
+
+    // const domElement = document.createElement("h2");
+    // domElement.className = "Clock";
+    // domElement.textContent = "Pozostało 10:20";
+
+    //Timebox editor
+
+    const br = React.createElement("br", null);
+    const inputOne = React.createElement("input", {
+      disabled: true,
+      value: "Ucze sie skrotow klawiszowych",
+      type: "text"
+    });
+    const inputTwo = React.createElement("input", {
+      disabled: true,
+      value: "25",
+      type: "number"
+    });
+    const labelOne = React.createElement("label", null, "Co robisz?", inputOne);
+    const labelTwo = React.createElement("label", null, "Ile minut?", inputTwo);
+    const buttonOne = React.createElement("button", {
+      disabled: true,
+      children: "Start"
+    });
+    const timeboxEditor = React.createElement(
+      "div",
+      {
+        className: "TimeboxEditor inactive"
+      },
+      labelOne,
+      br,
+      labelTwo,
+      br,
+      buttonOne
+    );
+
+    //Timebox
+
+    const h1TB = React.createElement("h1", {
+      children: "Ucze sie skrotow klawiszowych"
+    });
+    const h2TB = React.createElement("h2", {
+      className: "Clock",
+      children: "Pozostalo 13:28"
+    });
+    const progressBar = React.createElement("div", {
+      className: "ProgressBar"
+    });
+    const buttonTBOne = React.createElement("button", { disbaled: true });
+    const buttonTBTwo = React.createElement("button", {
+      children: "Stop"
+    });
+    const buttonTBThree = React.createElement("button", {
+      children: "Pauzuj"
+    });
+
+    const timebox = React.createElement(
+      "div",
+      {
+        className: "Timebox"
+      },
+      h1TB,
+      h2TB,
+      progressBar,
+      buttonOne,
+      buttonTBTwo,
+      buttonTBThree,
+      "Liczba przerw: 2"
+    );
+
+    //free Elements
+
+    const h1 = React.createElement("h1", {
+      children: "Kurs Reacta Tydzien 2"
+    });
+
+    const hr = React.createElement("hr", null);
+
+    //mainApp
+
+    const appDiv = React.createElement(
+      "div",
+      {
+        className: "App"
+      },
+      timeboxEditor,
+      timebox
+    );
+
+    const mainDiv = React.createElement("div", null, h1, hr, appDiv);
+
+    ReactDOM.render(mainDiv, rootElement);
+  </script>
+</html>
