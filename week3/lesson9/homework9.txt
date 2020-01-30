@@ -1,3 +1,4 @@
 -kiedy wyswietlamy statyczne dane,
 -kiedy wiemy na pewno ze renderujemy jedna liste dla danego komponentu, (w przypadku renderowania dwoch uzycie kluczy spowoduje powtorzenie kluczy),
 -kiedy nie podpinamy akcji do rodzica,
+-kiedy dodamy do wyrenderowanego indexu stringa i zrobimy z niego cos w stylu key={`${i}-timebox`} (metoda nie jest perfekcyjna ale wyklucza powtorzenie sie kluczy z innej listy uzywajacej indexow tablicy i jednoczesnie usuwa blad z konsoli :D),
